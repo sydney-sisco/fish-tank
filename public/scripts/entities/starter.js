@@ -2,8 +2,10 @@ class Starter extends Denizen {
 
   constructor(options) {
     super(options);
-    this.imageUri = '/images/volcano.jpg';
+    this.imageUri = '/images/pipe-clipart-pixel-art-3.png';
     this.position.y += this.height;
+    this.height = options.height || 100;
+    this.width = options.width || 100;
   }
 
   update(t) {
