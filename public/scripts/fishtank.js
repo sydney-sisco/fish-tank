@@ -16,9 +16,17 @@ class Fishtank {
   }
 
   getRandomSpecies() {
-    var specieses = Object.values(this.specieses);
-    var index = randRangeInt(specieses.length - 1);
-    return specieses[index];
+    // var specieses = Object.values(this.specieses);
+    // var index = randRangeInt(specieses.length - 1);
+    // return specieses[index];
+
+    const rand = randRangeInt(1, 4);
+    if (rand === 1) {
+      return BiteFish;
+    } else {
+      return GoFish;
+    }
+
   }
 
   registerDenizen(individual) {
@@ -47,8 +55,8 @@ class Fishtank {
     $victim.css({ transition: 'all ' + duration });
     $victim.css({
       opacity: '0',
-      width: $victim.width() * 3,
-      height: $victim.height() * 3,
+      // width: $victim.width() * 3,
+      // height: $victim.height() * 3,
     });
     setTimeout(() => $victim.remove(), 3000);
   }

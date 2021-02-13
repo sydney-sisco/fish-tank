@@ -2,10 +2,16 @@ class Fish extends Denizen {
 
   constructor(options) {
     super(options);
-    this.imageUri = '/images/yellow_fish.gif';
+    this.imageUri = `/images/${this.pickColour()}_fish.gif`;
     this.maxSwimSpeed = 100;
     this.makeNewVelocity();
     this.isTasty = true;
+  }
+
+  pickColour() {
+    const colours = ['black', 'blue', 'green', 'orange', 'red', 'yellow'];
+
+    return colours[randRangeInt(0, colours.length - 1)];
   }
 
   generateSwimVelocity(max, min) {

@@ -30,7 +30,7 @@ class BiteFish extends Fish {
           denizen.kill();
           // this.height += 30;
           // this.width += 30;
-          break;
+          // break;
         }
       }
     }
@@ -42,9 +42,9 @@ class BiteFish extends Fish {
       this.kill();
     }
 
-    // accend
-    if (this.height > 10000) {
-      this.kill(5);
-    }
+    // // accend
+    // if (this.height > 10000) {
+    //   this.kill(5);
+    // }
   }
 }
