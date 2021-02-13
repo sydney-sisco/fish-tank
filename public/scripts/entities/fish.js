@@ -2,8 +2,9 @@ class Fish extends Denizen {
 
   constructor(options) {
     super(options);
-    this.imageUriLeft = '/images/yellow_fish_l.gif';
-    this.imageUriRight = '/images/yellow_fish_r.gif';
+    this.imageUri = '/images/yellow_fish.gif';
+    // this.imageUriLeft = '/images/yellow_fish_l.gif';
+    // this.imageUriRight = '/images/yellow_fish_r.gif';
     this.maxSwimSpeed = 100;
     this.makeNewVelocity();
     this.isTasty = true;
@@ -35,29 +36,22 @@ class Fish extends Denizen {
   }
 
   renderRules() {
-    let facing;
-    if (this.swimVelocity.x > 0) {
-      // facingLeft = false;
-      facing = 'r';
-    } else {
-      // facingLeft = true;
-      facing = 'l';
+    let facingRight = true;
+    if (this.swimVelocity.x < 0) {
+      facingRight = false;
     }
 
     const rules = {
-      imageUri: facing === 'l' ? this.imageUriLeft : this.imageUriRight,
+      imageUri: this.imageUri,
       css: {
         width: this.width,
         height: this.height,
+        // transform: `rotate(${randRangeInt(0, 360)}deg)`
+        transform: facingRight ? 'scaleX(1)' : 'scaleX(-1)'
       },
       x: this.position.x - Math.floor(this.width/2),
       y: this.position.y - Math.floor(this.height/2),
     };
-
-    // if (facingLeft) {
-    //   rules.css['-webkit-transform'] = 'scaleX(-1)';
-    //   rules.css['transform'] = 'scaleX(-1)'
-    // }
 
     return rules;
   }

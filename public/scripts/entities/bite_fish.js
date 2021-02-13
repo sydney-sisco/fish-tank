@@ -2,9 +2,8 @@ class BiteFish extends Fish {
 
   constructor(options) {
     super(options);
-    this.imageUriLeft = '/images/bite_fish_l.gif';
-    this.imageUriRight = '/images/bite_fish_r.gif';
-    this.sated = 1
+    this.imageUri = '/images/bite_fish.gif';
+    this.sated = .5
   }
 
   updateOneTick() {
@@ -18,13 +17,15 @@ class BiteFish extends Fish {
     // look for food
     this.sated -= PHYSICS_TICK_SIZE_S;
     if (this.sated < 0) {
-      this.sated = 1;
+      this.sated = .5;
       const food = this.tank.getProximateDenizens(this.position, this.height);
       for (const denizen of food) {
         if (denizen !== this && denizen.isTasty) {
           console.log("yum yum!");
+          this.position = denizen.position.clone();
           denizen.kill();
           this.height = this.width *= 1.5
+          // break;
         }
       }
     }
