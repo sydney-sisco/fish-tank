@@ -3,8 +3,6 @@ class Fish extends Denizen {
   constructor(options) {
     super(options);
     this.imageUri = '/images/yellow_fish.gif';
-    // this.imageUriLeft = '/images/yellow_fish_l.gif';
-    // this.imageUriRight = '/images/yellow_fish_r.gif';
     this.maxSwimSpeed = 100;
     this.makeNewVelocity();
     this.isTasty = true;

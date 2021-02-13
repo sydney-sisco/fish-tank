@@ -6,12 +6,8 @@ class Starter extends Denizen {
     this.position.y += this.height;
     this.height = options.height || 100;
     this.width = options.width || 100;
-    this.spawnTimer = options.spawnTimer || randRange(2, 6);
+    this.spawnTimer = options.spawnTimer || randRange(.3, 1);
   }
-
-  // update(t) {
-  //   // no physics for Starter
-  // }
 
   updateOneTick() {
     // have the starter spawn eggs automatically if SCREEN_SAVER_MODE is True
@@ -21,13 +17,14 @@ class Starter extends Denizen {
         // spawn 1 - 3 eggs
         this._spawnEgg(randRangeInt(1, 3));
         // reset the spawn timer
-        this.spawnTimer = randRangeInt(3, 6);
+        this.spawnTimer = randRange(.3, 1);
       }
     }
   }
 
   onClick(event) {
     this._spawnEgg(1);
+    this.spawnTimer = randRange(.3, 1);
   }
 
   // spawns a given number of eggs
